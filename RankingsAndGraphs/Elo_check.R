@@ -21,7 +21,7 @@ library("PlayerRatings")
 library("dplyr")
 library("ggplot2")
 
-setwd("~/../Desktop/PNW_Smash_Database")
+setwd("~/../Desktop/Projects/PNWSmashDatabase")
 setwd("SmashDatabase")
 source("ChallongeAPI.R")
 setwd("..")
@@ -152,7 +152,7 @@ create_region_ranking <- function(region_name, bracket_links) {
     player_ids <- add_player(player_ids, i)
   }
   View(player_ids)
-  EloHistory <<- data.frame(pid = "test", rank = 0, Date = 0, tournament = "test")
+  EloHistory <<- data.frame(pid = character(), rank = character(), Date = character(), tournament = character())
   for(i in bracket_links) {
     participants <- extract_participants(i)
     tournament.get <- GET(paste0(challonge_base, "tournaments/", i, ".json"), accept_json())

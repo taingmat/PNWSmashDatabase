@@ -6,13 +6,9 @@ library("ggplot2")
 library("scales")
 library("plotly")
 
-setwd("~/../Desktop/PNW_Smash_Database")
+setwd("~/../Desktop/Projects/PNWSmashDatabase")
 source("RankingsAndGraphs/Elo_check.R")
-setwd("SmashDatabase")
-source("ChallongeAPI.R")
-setwd("..")
 
-#PR_Brackets <- list("EloTestMika1")
 PR_Brackets <- list("supportpriority3", "supportpriority3V2", "RIPANTi")
 PR_Brackets2 <- list("Wgasmashsept2017", "wgasmashfall2017pr3", "wgasmash4octpr")
 UW_PR_Spring2018 <- create_region_ranking("UWFALL2017", PR_Brackets)
@@ -31,6 +27,8 @@ SOWA_Brackets <- list("GiG905",
                        "gig1128",
                        "gig1205")
 SOWA_PR_Fall2017 <- create_region_ranking("2017", SOWA_Brackets)
+##This is made within elo check when the region ranking is created
+##It's the current EloHistory 
 SOWAHistory <- EloHistory
 write.csv(SOWAHistory, file = "RegionHistories/SOWAHistory.csv") 
 
@@ -39,15 +37,17 @@ Test_Ranking <- create_region_ranking("2017", Test_Brackets)
 Test_History <- EloHistory
 write.csv(Test_History, file = "RegionHistories/TestHistory.csv")
 ##########################################Example of extracting brackets#########################################
+
 # Mika_tournaments <- extract_tournamentlist()
 # PR1_matches <- extract_matches("Wgasmashsept2017")
 # PR1_participants <- extract_participants("Wgasmashsept2017") 
 # PR2_matches <- extract_matches("wgasmash4octpr")
 # PR2_participants <- extract_participants("wgasmash4octpr") 
 # UW_PR <- rbind(PR1_matches, PR2_matches)
+
 ############################Example of doing things manually#################################
-UW_Smash_PlayerRatings <- create_region("UW_Smash")
-# 
+
+# UW_Smash_PlayerRatings <- create_region("UW_Smash")
 # region_name <- "UW_Smash"
 # bracket_links <-  list("Mika71618a", "Mika71618b")
 # player_ids <- create_region(region_name)
@@ -76,11 +76,11 @@ UW_Smash_PlayerRatings <- create_region("UW_Smash")
 #UW_ratings <- glicko(create_game(0, 0, 0, 0))
 #UW_ratings <- report_game_by_tag(UW_ratings, UW_Smash_PlayerRatings, 1, "Mika", "AQT")
 #print(UW_ratings)
- Mika_Matches <- SoWAHistory %>% filter(pid =='Mika')
- a <- ggplot(Mika_Matches, aes(x = as.Date(Date, origin="1970-01-01"), y = rank)) + 
+
+ MikaRankHistory <- SOWAHistory %>% filter(pid =='Mika')
+ a <- ggplot( MikaRankHistory, aes(x = as.Date(Date, origin="1970-01-01"), y = rank)) + 
    geom_line() +
    scale_x_date(labels = date_format("%d-%m-%Y"))
  
- g <- ggplotly(a)
+ MikaRankGraph <- ggplotly(a)
  
- g

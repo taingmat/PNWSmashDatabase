@@ -4,7 +4,7 @@ library(jsonlite)
 library(dplyr)
 
 ###############################CHALLONGE API#####################################
-setwd("~/../Desktop/PNW_Smash_Database/SmashDatabase")
+setwd("~/../Desktop/Projects/PNWSmashDatabase/SmashDatabase")
 source("keys.R")
 username <- "Mikazuchi"
 challonge_base <- paste0("https://Mikazuchi:", challonge_key, "@api.challonge.com/v1/")
