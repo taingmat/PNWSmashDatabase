@@ -84,3 +84,4 @@ write.csv(Test_History, file = "RegionHistories/TestHistory.csv")
  
  MikaRankGraph <- ggplotly(a)
  
+ SetHistory <- rbind(Challonge_example, SmashGGExample)

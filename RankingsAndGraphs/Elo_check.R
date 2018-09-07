@@ -108,10 +108,7 @@ player_id <- function(region, tag) {
 report_challonge_tournament <- function(region_ratings, player_list, date, tournament_url) {
   match.df <- extract_matches(tournament_url)
   participants <<- extract_participants(tournament_url)
-  tournament.get <- GET(paste0(challonge_base, "tournaments/", tournament_url, ".json"), accept_json())
-  tournament.body <- content(tournament.get, "text")
-  tournament.table <- fromJSON(tournament.body)
-  name <- tournament.table$tournament$name
+  name <- extract_tournamentName(tournament_url)
   ## Extract the new ranks of each player
   for(i in 1:nrow(match.df)) {
     region_ratings <- report_game_by_tag(region_ratings, player_list, 0, match.df$winner_id[i], match.df$loser_id[i])
@@ -176,12 +173,3 @@ create_region_ranking <- function(region_name, bracket_links) {
 
 update_region_ranking <- function(initial_region, region_rating, bracket_link) {
 }
-
-
-# readinteger <- function()
-# { 
-#   n <- readline(prompt="Enter an integer: ")
-#   return(n)
-# }
-
-#print(readinteger())
