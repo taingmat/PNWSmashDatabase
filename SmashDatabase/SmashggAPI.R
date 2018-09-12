@@ -3,6 +3,9 @@
 library(httr)
 library(jsonlite)
 library(dplyr)
+library(rlist)
+
+setwd("~/../Desktop/Projects/PNWSmashDatabase/Data/")
 
 ##Smash gg dates: as.Date(501198, origin="646-04-27") 
 
@@ -10,18 +13,14 @@ library(dplyr)
 ##Will check for new players and confirm their existance
 
 ##Need a table with tournaments
+tournaments <- read.csv("Tournaments.csv", stringsAsFactors = FALSE)
 ##Add to the original table 
 ##If the tournament is already in the original then don't be redundant 
 
-type <- c("Singles") 
-name <- c("orbitar-1")
-date <- c("0912")
-url <- c("huh")
-pr <- c(FALSE)
-region <- c("WWA")
+#Read in a previous set history 
 
-Tournaments <- data.frame(type, name, date, url, pr, region)
-
+##Given a tag returns the tag with sponsors removed
+#Sponsors are any text that comes before the "|" symbol
 removeSponsors <- function(x) {
   while(grepl("\\|", x)) {
     x = sub("^[^|]*", "", x)
@@ -30,8 +29,9 @@ removeSponsors <- function(x) {
   return(x)
 }
 
+#Given a phase id 
+#Returns a dataframe of all sets played during that phase
 SetsFromPhaseId <- function(phaseID) {
-  ##tournamentID <- 195176
   ##Collects entrants and their player IDS
   entrants.Get <- GET(paste0("https://api.smash.gg/phase_group/", phaseID,"?expand[]=entrants"), state = "all", accept_json())
   entrants.body <- content(entrants.Get, "text")
@@ -98,26 +98,37 @@ phaseKey <- function(tournamentName) {
   return(expandGroups %>% select(id, phaseId, tournamentName, slug))
 }
 
-test <- phaseKey("orbitar-stars-1")
+SetHistory <- data.frame(Tournament = character(), 
+                         date = character(), 
+                         player_1id = character(),
+                         player_2id = character(), 
+                         player_1score = character(), 
+                         player2_score = character(), 
+                         url = character())
 
 ##Extracts the setHistory of multiple tournaments given their phase ids
 extractSetHistoryMultiple <- function(tournamentIds) {
-  newBrackets <- c()
-  x <- 0
+  newTournaments <- data.frame(type = character(), 
+                               name = character(), 
+                               date = character(), 
+                               url = character(), 
+                               pr = character(), 
+                               region = character())
   for (tournamentId in tournamentIds) {
     #check to see if it's not in the set history 
-    if (contains(Tournaments$name, tournamentId)) {
-      type <- c("Singles") 
-      name <- c("orbitar-1")
-      date <- c("0912")
-      url <- c("huh")
-      pr <- c(FALSE)
-      region <- c("WWA")
-      newBrackets
-      x <- x + 1
+    if (!(tournamentId %in% tournaments$name)) {
+      newTournament <- data.frame(type = NA, 
+                                   name = tournamentId, 
+                                   date = NA, 
+                                   url = NA, 
+                                   pr = NA, 
+                                   region = NA)
+      newTournaments <- rbind(newTournaments, newTournament)
+      tournaments <<- rbind(newTournaments, tournaments)
+      
     }
   }
-  phaseIds <- extractMultiplePhaseIds(tournamentIds) 
+  phaseIds <- extractMultiplePhaseIds(newTournaments) 
   testTable <- data.frame(id = character(), 
                           eventId = character(), 
                           phaseGroupId = character(), 
@@ -144,26 +155,38 @@ extractSetHistoryMultiple <- function(tournamentIds) {
       testTable$tournamentName[testTable$phaseGroupId == i] = key$tournamentName[key$id == i]
     }
   }
-  return(testTable %>% select(Tournament = tournamentName, date = date, 
-                              player1_id = entrant1Id, player2_id = entrant2Id, player1_score = entrant1Score, player2_score = entrant2Score, url = slug))
+  testTable <- testTable %>% select(Tournament = tournamentName, 
+                              date = date, 
+                              player1_id = entrant1Id, 
+                              player2_id = entrant2Id, 
+                              player1_score = entrant1Score, 
+                              player2_score = entrant2Score, 
+                              url = slug)
+  print(testTable)
+  SetHistory <<- rbind(testTable, SetHistory)
+  write.csv(SetHistory, file = "SetHistory.csv", row.names = FALSE)
+  return(SetHistory)
 }
 
-mergePlayers <- function(originalTag, newTag) {
-  
+mergePlayers <- function(originalTag, alias, SetHistory) {
+  SetHistory$player_1id[player_1id == alias] == originalTag
+  SetHistory$player_2id[player_2id == alias] == originalTag
+  return(SetHistory)
 }
+
 ##Must have X
 tournamentNames <- list("orbitar-stars-1")
-x <- 0
-while(x < 43) {
-  y <- x + 11
-  if(y >= 40) {
-    tournamentNames[x + 2] = paste0("orbitar-", y + 1)
-  }
-  else {
-    tournamentNames[x + 2] = paste0("orbitar-", y)
-  }
-  x <- x + 1
-}
+# x <- 0
+# while(x < 43) {
+#   y <- x + 11
+#   if(y >= 40) {
+#     tournamentNames[x + 2] = paste0("orbitar-", y + 1)
+#   }
+#   else {
+#     tournamentNames[x + 2] = paste0("orbitar-", y)
+#   }
+#   x <- x + 1
+# }
 
 SmashGGExample <- extractSetHistoryMultiple(tournamentNames)
 
