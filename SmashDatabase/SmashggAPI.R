@@ -117,6 +117,7 @@ extractSetHistoryMultiple <- function(tournamentIds) {
   for (tournamentId in tournamentIds) {
     #check to see if it's not in the set history 
     if (!(tournamentId %in% tournaments$name)) {
+      print(paste0(tournamentId, " has not yet been processed"))
       newTournament <- data.frame(type = NA, 
                                    name = tournamentId, 
                                    date = NA, 
@@ -175,7 +176,7 @@ mergePlayers <- function(originalTag, alias, SetHistory) {
 }
 
 ##Must have X
-tournamentNames <- list("orbitar-stars-1")
+tournamentNames <- list("orbitar-stars-1", "oribtar-43")
 # x <- 0
 # while(x < 43) {
 #   y <- x + 11
