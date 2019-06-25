@@ -10,22 +10,22 @@
 library(shiny)
 library(shinythemes)
 library(plotly)
-history <- read.csv("..//RegionHistories/history.csv")
+history <- read.csv("../Data/RegionRankings/history.csv")
 # Define UI for application that draws a histogram
 shinyUI(fluidPage( theme = shinytheme("superhero"),
   
   # Application title
-  titlePanel("Challonge download"),
+  titlePanel("PNW Ranking"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-      selectInput("region", label = h3("Select Region"), 
-                  choices = c( "SOWA" = "SOWAHistory.csv", 
-                               "Test" = "TestHistory.csv"), 
-                  selected = "SOWAHistory.csv"),
-      
-      uiOutput("choose_player")),
+      # selectInput("region", label = h3("Select Region"), 
+      #             choices = c( "SOWA" = "SOWAHistory.csv", 
+      #                          "Test" = "TestHistory.csv"), 
+      #             selected = "SOWAHistory.csv"),
+      # 
+      uiOutput("choose_player", selected = "Mika")),
       
       # textInput("text", label = h3("Single Bracket"), value = "Enter text...")
       # ,

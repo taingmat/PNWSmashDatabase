@@ -21,7 +21,7 @@ library("PlayerRatings")
 library("dplyr")
 library("ggplot2")
 
-setwd("~/../Desktop/Projects/PNWSmashDatabase")
+setwd("/media/mika/OS-Shared/temp/dump-20190623T084546Z-001/dump/Projects/PNWSmashDatabase")
 setwd("SmashDatabase")
 source("ChallongeAPI.R")
 setwd("..")

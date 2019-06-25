@@ -11,7 +11,7 @@ library(dplyr)
 ##If the tournament is already in the original then don't be redundant 
 
 #Initial Setup
-setwd("~/../Desktop/Projects/PNWSmashDatabase/SmashDatabase")
+setwd("/media/mika/OS-Shared/temp/dump-20190623T084546Z-001/dump/Projects/PNWSmashDatabase/SmashDatabase/")
 source("keys.R")
 username <- "Mikazuchi"
 challonge_base <- paste0("https://Mikazuchi:", challonge_key, "@api.challonge.com/v1/")
@@ -59,31 +59,34 @@ extract_participants <- function(tournament_id) {
 ##returns a data frame of all of the matches that occured at that tournamnet 
 extract_matches <- function(tournament_id) {
   participants <- extract_participants(tournament_id)
+  # participant_Record <- participants
   matches.get <- GET(paste0(challonge_base, "tournaments/", tournament_id, "/matches.json"), accept_json())
   matches.body <- content(matches.get, "text")
   matches.table <- fromJSON(matches.body)
   matches <- data.frame(matches.table, row.names = NULL)
   #renames by id and tag
   for(i in participants$id) {
+    # participant_Record <- participant_Record
     temp = removeSponsors(participants$name[participants$id == i])
     matches$match[matches$match == i] <- temp
-    ##If theirs already a match change it 
-    #if(!(temp %in% name_key$alias)) {
-    #  response <- readline(paste0("Is ", temp, " a new player? (hit y)"))
-    #  if(response != "y") {
-    #    screen_name <- readline(paste0("What is ", temp,"\'s actual tag? "))
-    #    if(!(screen_name %in% name_key$alias)) {
-    #      name_key <<- new_alias(screen_name, screen_name) 
-    #    }
-    #    name_key <<- new_alias(screen_name, temp)  
-    #  }
-    #  else {
-    #   name_key <<- new_alias(temp, temp)  
-    #  }
-    #}
-    #accurate_name <- name_key$screen_name[name_key$alias == temp]
-    #matches$match[matches$match == temp] <-  accurate_name
-    #Participants$name[Participants$name == temp] <<- accurate_name
+    #If theirs already a match change it
+    if(!(temp %in% name_key$alias)) {
+     # response <- readline(paste0("Is ", temp, " a new player? (hit y)"))
+     # if(response != "y") {
+     #   screen_name <- readline(paste0("What is ", temp,"\'s actual tag? "))
+     #   if(!(screen_name %in% name_key$alias)) {
+     #     name_key <<- new_alias(screen_name, screen_name)
+     #   }
+     #   name_key <<- new_alias(screen_name, temp)
+     # }
+     # else {
+    name_key <<- new_alias(temp, temp)
+     # }
+    }
+    accurate_name <- name_key$screen_name[name_key$alias == temp]
+    matches$match[matches$match == temp] <-  accurate_name
+    # print(participant_Record)
+    # participant_Record$name[participant_Record$name == temp] <<- accurate_name
   }
   return(matches$match)
 }

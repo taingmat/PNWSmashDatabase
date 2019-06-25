@@ -6,7 +6,7 @@ library("ggplot2")
 library("scales")
 library("plotly")
 
-setwd("~/../Desktop/Projects/PNWSmashDatabase")
+setwd("/media/mika/OS-Shared/temp/dump-20190623T084546Z-001/dump/Projects/PNWSmashDatabase")
 source("RankingsAndGraphs/Elo_check.R")
 
 PR_Brackets <- list("supportpriority3", "supportpriority3V2", "RIPANTi")

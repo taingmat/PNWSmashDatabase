@@ -4,8 +4,9 @@ library(dplyr)
 library(data.table)
 library(ggplot2)
 library(plotly)
-source("../SmashDatabase/keys.R")
-history <- read.csv("../RegionHistories/history.csv")
+##source("../SmashDatabase/keys.R")
+history <- read.csv("../Data/RegionRankings/history.csv")
+players <- history$pid
 
 #source("../Elo_check.R")
 #source("Challonge_api.R")
@@ -14,34 +15,25 @@ history <- read.csv("../RegionHistories/history.csv")
 
 
 shinyServer(function(input, output) {
-  #bracket <- reactive({ 
-  #    GET(paste0(challonge_base, "tournaments/", input$text[1], "/participants.json"))
-  #}) 
-  #output$test <- renderTable({
-  #  bracket %>% content("text") %>% fromJSON() %>% data.frame() 
-  #})
-  #PR_Brackets <- list("Wgasmashsept2017", "wgasmashfall2017pr3", "wgasmash4octpr")
-  #UW_PR_Fall2017 <- create_region_ranking("UWFALL2017", PR_Brackets)
   
   output$test <- renderDataTable({
-    history <- read.csv(paste0("../RegionHistories/", input$region))
+    history <- read.csv("../Data/RegionRankings/SOWAHistory.csv")
     history  %>% filter(pid == input$player)
   })
 
   output$matchHistory <- renderDataTable({
-    history <- read.csv("../RegionHistories/history.csv")
+    history <- read.csv("../Data/RegionRankings/history.csv")
     history  %>% filter(pid == input$player)
   })
   
   output$choose_player <- renderUI ({
-    history <- read.csv(paste0("../RegionHistories/", input$region))
+    history <- read.csv("../Data/RegionRankings/SOWAHistory.csv")
     selectInput("player", label = h3("Select Player"), 
-                choices = history$pid, 
-                selected = "Mika") 
+                choices = players) 
   })
   
   output$visual <- renderPlotly({
-    history <- read.csv(paste0("../RegionHistories/", input$region))
+    history <- read.csv("../Data/RegionRankings/SOWAHistory.csv")
     history <- history  %>% filter(pid == input$player)
       history$Date = as.Date(history$Date, origin="1970-01-01") 
       a <- ggplot(history, aes(x = Date, y = rank, label = tournament)) +

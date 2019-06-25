@@ -5,7 +5,7 @@ library(jsonlite)
 library(dplyr)
 library(rlist)
 
-setwd("~/../Desktop/Projects/PNWSmashDatabase/Data/")
+setwd("/media/mika/OS-Shared/temp/dump-20190623T084546Z-001/dump/Projects/PNWSmashDatabase/Data/")
 
 ##Smash gg dates: as.Date(501198, origin="646-04-27") 
 
@@ -163,7 +163,7 @@ extractSetHistoryMultiple <- function(tournamentIds) {
                               player1_score = entrant1Score, 
                               player2_score = entrant2Score, 
                               url = slug)
-  print(testTable)
+  # print(testTable)
   SetHistory <<- rbind(testTable, SetHistory)
   write.csv(SetHistory, file = "SetHistory.csv", row.names = FALSE)
   return(SetHistory)
@@ -176,7 +176,7 @@ mergePlayers <- function(originalTag, alias, SetHistory) {
 }
 
 ##Must have X
-tournamentNames <- list("orbitar-stars-1", "oribtar-43")
+tournamentNames <- list("orbitar-stars-1")
 # x <- 0
 # while(x < 43) {
 #   y <- x + 11
@@ -188,8 +188,6 @@ tournamentNames <- list("orbitar-stars-1", "oribtar-43")
 #   }
 #   x <- x + 1
 # }
-
-SmashGGExample <- extractSetHistoryMultiple(tournamentNames)
 
 
 

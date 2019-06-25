@@ -1,0 +1,346 @@
+shiny::runApp('C:/Users/compg_000/Desktop/PNW_Smash_Database/Smash_Database/PNWWebApp')
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+grepl("|", "")
+grepl("", "|")
+grepl(" ", "|")
+grepl(" ", "")
+grepl(" ", "  ")
+grepl("  ", " ")
+x <- "W|D|N|TO"
+(grepl("|", x)
+)
+x = sub("^[|]*", "", x)
+print(x)
+x = sub("^[^|]*", "", x)
+x = substring(x, 2)
+x = gsub("^|", "", x)
+x = gsub("^|", "", x)
+x = sub("^[^|]*", "", x)
+x = gsub("^|", "", x)
+x = gsub("[^|]", "", x)
+x = gsub("[^|]", "", x)
+x <- "W|D|N|TO"
+print(x)
+x = sub("^[^|]*", "", x)
+x = gsub("[^|]", "", x)
+x <- "W|D|N|TO"
+x = sub("^[^|]*", "", x)
+x = gsub("[|]", "", x)
+x <- "W|D|N|TO"
+print(x)
+x <- "W|D|N|TO"
+x = sub("^[^|]*", "", x)
+x = gsub("[\\|]", "", x)
+x <- "W|D|N|TO"
+x = sub("^[^|]*", "", x)
+x = gsub("[^\\|]", "", x)
+x = sub("|", "", x)
+x = sub("^[^|]*", "", x)
+x <- "W|D|N|TO"
+x = sub("^[^|]*", "", x)
+x = sub("|", "", x)
+x = sub("^[^|]*", "", x)
+x = sub("|", "", x)
+x = sub("^[^|]*", "", x)
+x = sub("\|", "", x)
+x = sub("\|", "", x)
+x = sub("|", "", x)
+x = gsub("|", "", x)
+x = sub("^[^|]*", "", x)
+x = gsub("|", "", x)
+x = gsub("|", "", x)
+x = substring(x, 2)
+x = substring(x, 2)
+x = substring(x, 2)
+x <- "W|D|N|TO"
+x <- "W|D|N|TO"
+x = sub("^[^|]*", "", x)
+x = substring(x, 2)
+x = sub("^[^|]*", "", x)
+x = substring(x, 2)
+x = sub("^[^|]*", "", x)
+x = substring(x, 2)
+x = sub("^[^|]*", "", x)
+grepl("|", "TO")
+grepl("TO", "|")
+grepl("TO", "TOO")
+grepl("\|", "TO")
+grep("|", "TO")
+grep("||", "TO")
+grepl("||", "TO")
+grepl("|}}}}}}}}|", "TO")
+grepl("|", "TO")
+grepl("\\|", "TO")
+x <- "W|D|N|TO"
+while(grepl("\\|", x)) {
+print(x)
+x = sub("^[^|]*", "", x)
+x = sub(x, 2)
+}
+while(grepl("\\|", x)) {
+print(x)
+x = sub("^[^|]*", "", x)
+x = sub(x, 2)
+}
+x <- "W|D|N|TO"
+while(grepl("\\|", x)) {
+print(x)
+x = sub("^[^|]*", "", x)
+x = sub(x, 2)
+}
+x = sub(x, 2)
+x = sub("^[^|]*", "", x)
+x = sub(x, 2)
+x = substring(x, 2)
+while(grepl("\\|", x)) {
+print(x)
+x = sub("^[^|]*", "", x)
+x = substring(x, 2)
+}
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+View(SmashGGExample)
+removeSponsors("Wes | Mika")
+removeSponsors <- function(x) {
+while(grepl("\\|", x)) {
+x = sub("^[^|]*", "", x)
+x = substring(x, 2)
+}
+return(x)
+}
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+View(SmashGGExample)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+View(SmashGGExample)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/ChallongeAPI.R')
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/ChallongeAPI.R')
+View(Challonge_example)
+PR_Brackets <- formatted_matches(list("supportpriority3", "supportpriority3V2", "RIPANTi"))
+PR_Brackets <- formatted_matches(list("supportpriority3")
+PR_Brackets <- formatted_matches("supportpriority3")
+PR_Brackets <- formatted_matches("supportpriority3")
+View(PR_Brackets)
+PR2_Brackets <- formatted_matches("supportpriority3")
+View(PR2_Brackets)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/ChallongeAPI.R')
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+View(Challonge_example)
+View(SmashGGExample)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/ChallongeAPI.R')
+View(Challonge_example)
+tournament_id <- "Mika71618b"
+matches.get <- GET(paste0(challonge_base, "tournaments/", tournament_id, "/matches.json"), accept_json())
+matches.body <- content(matches.get, "text")
+matches.table <- fromJSON(matches.body)
+matches <- data.frame(matches.table, row.names = NULL)
+View(matches$match)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/ChallongeAPI.R')
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/ChallongeAPI.R')
+View(Challonge_example)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/ChallongeAPI.R')
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/ChallongeAPI.R')
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+test <- tournamentKey("orbitar-stars-1")
+View(test)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+i <- 1
+while(i < 36) {
+tournamentNames[i + 1] = paste0("orbitar-", i)
+i = i + 1
+}
+View(tournamentNames)
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+i <- 1
+while(i < 54) {
+tournamentNames[i + 1] = paste0("orbitar-", i)
+i = i + 1
+}
+View(tournamentNames)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+View(tournamentNames)
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+i <- 11
+while(i < 54) {
+tournamentNames[i + 1] = paste0("orbitar-", i)
+i = i + 1
+}
+View(tournamentNames)
+i <- 11
+while(i < 54) {
+tournamentNames[i + 1] = paste0("orbitar-", i)
+i = i + 1
+}
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+i <- 11
+while(i < 54) {
+tournamentNames[i + 1] = paste0("orbitar-", i)
+i = i + 1
+}
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+i <- 11
+x <- 11
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+x <- 11
+while(x < 54) {
+tournamentNames[i + 1] = paste0("orbitar-", i)
+i = i + 1
+}
+x <- 11
+while(x < 54) {
+tournamentNames[x + 1] = paste0("orbitar-", x)
+x = x + 1
+}
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+x <- 11
+while(x < 54) {
+tournamentNames[x + 1] = paste0("orbitar-", x)
+x = x + 1
+}
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+ix < - 1
+while(x < 43) {
+tournamentNames[x + 1] = paste0("orbitar-", x + 11)
+x = x + 1
+}
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+x <- 1
+while(x < 43) {
+tournamentNames[x + 1] = paste0("orbitar-", x + 11)
+x = x + 1
+}
+View(tournamentNames)
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+x <- 1
+while(x < 43) {
+tournamentNames[x + 1] = paste0("orbitar-", (x + 11))
+x = x + 1
+}
+View(tournamentNames)
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+x <- 1
+while(x < 43) {
+print(x + 11)
+tournamentNames[x + 1] = paste0("orbitar-", (x + 11))
+x = x + 1
+}
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+x <- 1
+while(x < 43) {
+y <- x + 11
+tournamentNames[x + 1] = paste0("orbitar-", y)
+x <- x + 1
+}
+View(tournamentNames)
+y <- x + 11
+tournamentNames[x + 1] = paste0("orbitar-", y)
+x <- 1
+while(x < 43) {
+y <- x + 11
+tournamentNames[x + 1] = paste0("orbitar-", y)
+x <- x + 1
+}
+View(tournamentNames)
+View(tournamentNames)
+tournamentNames
+View(tournamentNames)
+SmashGGExample <- extractSetHistoryMultiple(tournamentNames)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+View(SmashGGExample)
+x <- 1
+while(x < 43) {
+y <- x + 11
+tournamentNames[x + 1] = paste0("orbitar-", y)
+x <- x + 1
+}
+View(tournamentNames)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+View(SmashGGExample)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+x <- 1
+while(x < 44) {
+y <- x + 11
+tournamentNames[x + 1] = paste0("orbitar-", y)
+x <- x + 1
+}
+View(tournamentNames)
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+x <- 0
+while(x < 44) {
+y <- x + 11
+tournamentNames[x + 1] = paste0("orbitar-", y)
+x <- x + 1
+}
+View(tournamentNames)
+View(tournamentNames)
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+x <- 0
+while(x < 44) {
+y <- x + 11
+tournamentNames[x + 2] = paste0("orbitar-", y)
+x <- x + 1
+}
+View(tournamentNames)
+View(tournamentNames)
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+x <- 0
+while(x < 44) {
+y <- x + 11
+if(y != 40) {
+tournamentNames[x + 2] = paste0("orbitar-", y)
+}
+x <- x + 1
+}
+x <- 0
+while(x < 44) {
+y <- x + 11
+if(y != 40) {
+tournamentNames[x + 2] = paste0("orbitar-", y)
+}
+x <- x + 1
+}
+View(tournamentNames)
+View(tournamentNames)
+##Must have X
+tournamentNames <- list("orbitar-stars-1")
+x <- 0
+while(x < 43) {
+y <- x + 11
+if(y >= 40) {
+tournamentNames[x + 2] = paste0("orbitar-", y + 1)
+}
+else {
+tournamentNames[x + 2] = paste0("orbitar-", y)
+}
+x <- x + 1
+}
+View(tournamentNames)
+View(tournamentNames)
+source('C:/Users/compg_000/Desktop/Projects/PNWSmashDatabase/SmashDatabase/SmashggAPI.R')
+View(SmashGGExample)
+pwd
+getwd()
+write.csv(SmashGGExample, file = "Orbitars11-43", row.names = FALSE)
+write.csv(SmashGGExample, file = "Orbitars11-43,csv", row.names = FALSE)
+write.csv(SmashGGExample, file = "Orbitars11-43.csv", row.names = FALSE)
