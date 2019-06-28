@@ -21,15 +21,22 @@ setwd("..")
 # cBrackets2 <- list("RSU1", "TRC121318", "RSU2", "gig122018", "UMSSingles122218", "RSUS3", "gig122718", "ESSM28U", "RSU4", "gig1319", "RSU5", "wgac1", "UWUPR1", "gig11018", "RSU6")
 # cBrackets3 <- list("wgac2", "gig11719", "UMSS11919", "RSU7", "wgac3", "RSU8", "wgac4", "gig13119", "RSU9", "wgac5", "gig2719", "wgac6", "ultimatethursday10", "RSU11", "wgac7", "ULTIMATETHURSDAY11", "ums3singles", "wgac8", "gig12")
 
-cBrackets <- list("wgac11", "WGASSPR1", "WGAC12", "wgac13", "wgac14", "wgac15", "WGASSPR2", "wgac16", "wgac17_prime", "wgac18", "wgac19")
-cBrackets2 <- list("GyromightsFinalPRSinglesBracket")
-cBrackets3 <- list("wgac20")
-#Set of SmashGG brackets eligible for PR 
-# sggBrackets1 <- list("smash-homelessness-3", "orbitar-63", "orbitar-64", "orbitar-65", "orbitar-66", "orbitar-67") 
-# sggBrackets <- list("orbitar-63", "orbitar-64", "orbitar-65", "evergreen-rising-5",  "smashworks-ultimate", "evergreen-rising-6")
+#WGA SPRING PR##################################################################
+# cBrackets <- list("wgac11", "WGASSPR1", "WGAC12", "wgac13", "wgac14", "wgac15", "WGASSPR2", "wgac16", "wgac17_prime", "wgac18", "wgac19")
+# cBrackets2 <- list("GyromightsFinalPRSinglesBracket")
+# cBrackets3 <- list("wgac20")
+# 
+# sggBrackets1 <- list()
+# sggBrackets <- list()
 
-sggBrackets1 <- list()
-sggBrackets <- list()
+#WWA SUMMER PR 
+cBrackets <- list("rsu26", "rocsmash_7", "wgac20", "gig26", "rsu27", "wgacs1", "trc27")
+cBrackets2 <- list("4k1w22ye", "gig28")
+cBrackets3 <- list("rsu29")
+
+sggBrackets1 <- list("gameworks-showdown-seattle-regional-finals", "ubcea-presents-heroes-vs-villains-2019")
+sggBrackets <- list("orbitar-71", "smashworks-ultimate-episode-2")
+
 #Create a new Match History
 cMatches <- data.frame()
 for (i in cBrackets) {
